@@ -1,0 +1,24 @@
+# Dependencies (covers root, frontend, and backend)
+**/node_modules/
+node_modules/
+
+# Environment variables & secrets
+**/.env
+**/.env.*
+!.env.example
+
+# Build outputs
+**/dist/
+**/build/
+**/.next/
+
+# Logs & debuggers
+**/npm-debug.log*
+**/yarn-debug.log*
+**/yarn-error.log*
+
+# System & Editor files
+.DS_Store
+Thumbs.db
+**/.vscode/
+**/.idea/

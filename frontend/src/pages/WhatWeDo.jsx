@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import WhatWeDoHero from "../components/WhatWeDo/WhatWeDoHero";
-import PillarsOfSuccess from "../components/Whatwedo/PillarOfSuccess";
-import ThematicAreasDetail from "../components/Whatwedo/ThematicAreas";
-import WhoWeServe from "../components/Whatwedo/WhoWeServe";
-import PeerAccountability from "../components/Whatwedo/PeerAccountability";
+import WhatWeDoHero from "../components/what-we-do/WhatWeDoHero";
+import PillarsOfSuccess from "../components/what-we-do/PillarOfSuccess";
+import ThematicAreasDetail from "../components/what-we-do/ThematicAreas";
+import WhoWeServe from "../components/what-we-do/WhoWeServe";
+import PeerAccountability from "../components/what-we-do/PeerAccountability";
 
 
 const WhatWeDoPage = () => {

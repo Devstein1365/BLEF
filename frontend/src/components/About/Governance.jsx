@@ -1,29 +1,25 @@
-import { FaShieldAlt, FaCheck, FaHandshake, FaGlobe } from "react-icons/fa";
-
-
-
-
+import { FaShieldAlt, FaChartPie, FaHandshake, FaBullhorn } from "react-icons/fa";
 
 const PILLARS = [
   {
-    icon: FaShieldAlt,
-    title: "Rigorous Compliance",
-    description: "Full compliance with corporate governance guidelines, anti-money laundering policies, and non-profit regulatory statutes.",
+    icon: FaChartPie,
+    title: "Strategy & Systems",
+    description: "Eliminating guesswork by helping founders implement documented workflows, operations, and scalable structures.",
   },
   {
-    icon: FaCheck,
-    title: "Audited Financials",
-    description: "Annual independent financial audits published openly to guarantee absolute donor and stakeholder accountability.",
+    icon: FaBullhorn,
+    title: "Marketing in Context",
+    description: "Customer acquisition and sales techniques grounded in the operational realities of African commerce.",
+  },
+  {
+    icon: FaShieldAlt,
+    title: "Financial Literacy & Cash Flow",
+    description: "Bookkeeping, cash flow management, pricing for profit, and preparing founders for investment and seed grants.",
   },
   {
     icon: FaHandshake,
-    title: "Transparent Grants",
-    description: "Merit-based selection processes with zero political interference or bias in fund allocation.",
-  },
-  {
-    icon: FaGlobe,
-    title: "Global Standards",
-    description: "Operating frameworks aligned with international philanthropic best practices and sustainable impact metrics.",
+    title: "Legal & Regulatory Compliance",
+    description: "Guidance on business formalization, intellectual property, and governance led by our Secretariat Legal Directorate.",
   },
 ];
 
@@ -33,29 +29,27 @@ const GovernanceImpact = () => {
       <div className="max-w-[1280px] mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
-          {/* Left Column */}
           <div className="lg:col-span-5">
             <span className="inline-block px-4 py-1.5 rounded-full bg-blef-green/10 text-blef-green-dark text-xs font-semibold uppercase tracking-widest">
-              Accountability First
+              Core Framework
             </span>
             <h2 className="mt-4 text-3xl sm:text-4xl font-extrabold text-blef-charcoal tracking-tight leading-tight">
-              Governance & Institutional <span className="text-blef-green">Integrity</span>
+              The Three Pillars of <span className="text-blef-green">Business Success</span>
             </h2>
             <p className="mt-4 text-base text-neutral-600 leading-relaxed">
-              We recognize that public trust is our most valuable asset. Every naira entrusted to Better Life Foundation is rigorously tracked, audited, and deployed directly into community transformation.
+              Most African SMEs fail not because the business idea was weak, but because the foundation was never built. BLEF equips entrepreneurs with the precise structural competencies needed to survive year one and scale past year five.
             </p>
 
             <div className="mt-8">
               <a
-                href="/impact"
+                href="/get-involved"
                 className="inline-flex items-center px-7 py-3.5 rounded-full bg-blef-green text-white font-bold text-sm hover:bg-blef-green-dark transition-all duration-200 shadow-md shadow-blef-green/20"
               >
-                Download Annual Reports
+                Partner With Us
               </a>
             </div>
           </div>
 
-          {/* Right Column: 4 Pillars Grid */}
           <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6">
             {PILLARS.map((item, idx) => {
               const Icon = item.icon;

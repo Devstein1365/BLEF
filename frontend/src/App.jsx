@@ -2,6 +2,11 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import RootLayout from "./Layouts/RootLayout";
 import HomePage from "./pages/HomePage";
 import About from "./pages/About";
+import WhatWeDoPage from "./pages/WhatWeDo";
+import ImpactPage from "./pages/Impact";
+import GetInvolvedPage from "./pages/GetInvolved";
+import MediaPage from "./pages/Media";
+import ContactPage from "./pages/Contact";
 
 // Temporary placeholder for unbuilt pages
 const PagePlaceholder = ({ title }) => (
@@ -21,12 +26,12 @@ function App() {
         <Route path="/" element={<RootLayout />}>
           <Route index element={<HomePage />} />
           <Route path="about" element={<About/>} />
-          <Route path="what-we-do" element={<PagePlaceholder title="What We Do" />} />
-          <Route path="what-we-do/:slug" element={<PagePlaceholder title="Thematic Area Detail" />} />
-          <Route path="impact" element={<PagePlaceholder title="Impact & Reports" />} />
-          <Route path="get-involved" element={<PagePlaceholder title="Get Involved / Partner" />} />
-          <Route path="media" element={<PagePlaceholder title="News & Media" />} />
-          <Route path="contact" element={<PagePlaceholder title="Contact Us" />} />
+          <Route path="what-we-do" element={<WhatWeDoPage/>} />
+          <Route path="what-we-do/:slug" element={<WhatWeDoPage />} />
+          <Route path="impact" element={<ImpactPage/>} />
+          <Route path="get-involved" element={<GetInvolvedPage/>} />
+          <Route path="media" element={<MediaPage />} />
+          <Route path="contact" element={<ContactPage />} />
           <Route path="donate" element={<PagePlaceholder title="Donate to BLEF" />} />
           <Route path="*" element={<PagePlaceholder title="404 - Page Not Found" />} />
         </Route>

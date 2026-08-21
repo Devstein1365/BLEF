@@ -11,7 +11,7 @@ import {
   FaBars,
   FaTimes,
 } from "react-icons/fa";
-import logo from "../assets/logo.png";
+import logo from "../assets/logo-2.png";
 
 const THEMATIC_AREAS = [
   { label: "Entrepreneurship & Business Development", href: "/what-we-do/entrepreneurship-business-development" },
@@ -38,7 +38,7 @@ const Header = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [mobileDropdownOpen, setMobileDropdownOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const dropdownRef = useRef(null);
+  const timeoutRef = useRef(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -46,15 +46,17 @@ const Header = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  useEffect(() => {
-    const onClick = (e) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
-        setDropdownOpen(false);
-      }
-    };
-    document.addEventListener("mousedown", onClick);
-    return () => document.removeEventListener("mousedown", onClick);
-  }, []);
+  // Smooth hover handlers for desktop with debounced close
+  const handleMouseEnter = () => {
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    setDropdownOpen(true);
+  };
+
+  const handleMouseLeave = () => {
+    timeoutRef.current = setTimeout(() => {
+      setDropdownOpen(false);
+    }, 150);
+  };
 
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? "hidden" : "";
@@ -110,7 +112,7 @@ const Header = () => {
       <div className="bg-white border-b border-neutral-200">
         <div className="max-w-[1280px] mx-auto px-6 py-3 flex items-center justify-between gap-6">
           <Link to="/" className="flex items-center gap-3 shrink-0">
-            <img src={logo} alt="Better Life Foundation" className="h-11 sm:h-[52px] w-auto" />
+            <img src={logo} alt="Better Life Entrepreneurship Foundation" className="h-11 sm:h-[52px] w-auto" />
             <div className="flex flex-col leading-tight">
               <span className="font-extrabold text-[1.05rem] text-blef-green-dark tracking-tight">
                 Better Life Foundation
@@ -123,40 +125,61 @@ const Header = () => {
             <ul className="flex items-center gap-1 list-none m-0 p-0">
               {NAV_LINKS.map((link) =>
                 link.dropdown ? (
-                  <li key={link.label} className="relative list-none" ref={dropdownRef}>
-                    <button
-                      onClick={() => setDropdownOpen((v) => !v)}
-                      aria-expanded={dropdownOpen}
-                      aria-haspopup="true"
-                      className="group relative flex items-center gap-1.5 px-3.5 py-2.5 rounded-md text-[0.92rem] font-semibold text-blef-charcoal hover:text-blef-green transition-colors cursor-pointer"
+                  <li
+                    key={link.label}
+                    className="relative list-none py-2"
+                    onMouseEnter={handleMouseEnter}
+                    onMouseLeave={handleMouseLeave}
+                  >
+                    <NavLink
+                      to={link.href}
+                      onClick={() => setDropdownOpen(false)}
+                      className={({ isActive }) =>
+                        `group relative inline-flex items-center gap-1.5 px-3.5 py-2.5 rounded-md text-[0.92rem] font-semibold transition-colors ${
+                          isActive ? "text-blef-green" : "text-blef-charcoal hover:text-blef-green"
+                        }`
+                      }
                     >
-                      {link.label}
-                      <FaChevronDown
-                        size={10}
-                        className={`transition-transform duration-200 ${dropdownOpen ? "rotate-180" : ""}`}
-                      />
-                      <span className="absolute left-3.5 right-3.5 bottom-1 h-0.5 bg-blef-gold scale-x-0 origin-left group-hover:scale-x-100 transition-transform duration-200" />
-                    </button>
+                      {({ isActive }) => (
+                        <>
+                          <span>{link.label}</span>
+                          <FaChevronDown
+                            size={10}
+                            className={`transition-transform duration-200 ${
+                              dropdownOpen ? "rotate-180 text-blef-green" : ""
+                            }`}
+                          />
+                          <span
+                            className={`absolute left-3.5 right-3.5 bottom-1 h-0.5 bg-blef-gold origin-left transition-transform duration-200 ${
+                              isActive ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
+                            }`}
+                          />
+                        </>
+                      )}
+                    </NavLink>
 
-                    <ul
-                      className={`absolute top-[calc(100%+0.5rem)] left-1/2 -translate-x-1/2 min-w-[340px] bg-white border border-neutral-200 rounded-xl shadow-[0_12px_32px_rgba(20,82,42,0.14)] p-2 list-none m-0 z-50 transition-all duration-200 ${
+                    {/* Desktop Dropdown Popover */}
+                    <div
+                      className={`absolute top-full left-1/2 -translate-x-1/2 pt-2 transition-all duration-200 ${
                         dropdownOpen
                           ? "opacity-100 visible translate-y-0 pointer-events-auto"
                           : "opacity-0 invisible -translate-y-2 pointer-events-none"
                       }`}
                     >
-                      {link.dropdown.map((item) => (
-                        <li key={item.label}>
-                          <Link
-                            to={item.href}
-                            onClick={() => setDropdownOpen(false)}
-                            className="block px-3.5 py-2.5 rounded-md text-[0.88rem] font-medium text-blef-charcoal border-l-[3px] border-transparent hover:bg-blef-cream hover:border-blef-gold hover:text-blef-green-dark transition-colors"
-                          >
-                            {item.label}
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
+                      <ul className="min-w-[360px] bg-white border border-neutral-200 rounded-2xl shadow-[0_16px_40px_rgba(20,82,42,0.14)] p-2.5 list-none m-0 z-50">
+                        {link.dropdown.map((item) => (
+                          <li key={item.label}>
+                            <Link
+                              to={item.href}
+                              onClick={() => setDropdownOpen(false)}
+                              className="block px-3.5 py-2.5 rounded-xl text-[0.88rem] font-medium text-blef-charcoal border-l-[3px] border-transparent hover:bg-blef-cream hover:border-blef-gold hover:text-blef-green-dark transition-all"
+                            >
+                              {item.label}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </li>
                 ) : (
                   <li key={link.label} className="list-none">
@@ -187,10 +210,10 @@ const Header = () => {
 
           <div className="flex items-center gap-4 shrink-0">
             <Link
-              to="/donate"
+              to="/get-involved"
               className="hidden lg:inline-flex items-center px-6 py-2.5 rounded-full bg-blef-green text-white font-bold text-[0.88rem] whitespace-nowrap bg-gradient-to-br from-blef-green to-blef-green hover:from-blef-green hover:to-blef-gold hover:-translate-y-0.5 hover:shadow-[0_6px_18px_rgba(212,160,23,0.35)] transition-all duration-300"
             >
-              Donate Now
+              Get Involved
             </Link>
 
             <button
@@ -214,21 +237,31 @@ const Header = () => {
         <ul className="list-none m-0 px-4 pt-2 pb-6">
           {NAV_LINKS.map((link) =>
             link.dropdown ? (
-              <li key={link.label} className="list-none">
-                <button
-                  onClick={() => setMobileDropdownOpen((v) => !v)}
-                  aria-expanded={mobileDropdownOpen}
-                  className="flex items-center justify-between w-full py-3.5 text-left font-semibold text-[0.98rem] text-blef-charcoal border-b border-neutral-200 cursor-pointer"
-                >
-                  {link.label}
-                  <FaChevronDown
-                    size={10}
-                    className={`transition-transform duration-200 ${mobileDropdownOpen ? "rotate-180" : ""}`}
-                  />
-                </button>
+              <li key={link.label} className="list-none border-b border-neutral-200">
+                <div className="flex items-center justify-between py-3.5">
+                  <Link
+                    to={link.href}
+                    onClick={() => setMobileOpen(false)}
+                    className="font-semibold text-[0.98rem] text-blef-charcoal hover:text-blef-green flex-1"
+                  >
+                    {link.label}
+                  </Link>
+                  <button
+                    onClick={() => setMobileDropdownOpen((v) => !v)}
+                    aria-label="Toggle thematic areas sub-menu"
+                    className="p-2 text-blef-charcoal hover:text-blef-green"
+                  >
+                    <FaChevronDown
+                      size={12}
+                      className={`transition-transform duration-200 ${
+                        mobileDropdownOpen ? "rotate-180 text-blef-green" : ""
+                      }`}
+                    />
+                  </button>
+                </div>
                 <ul
-                  className={`list-none m-0 bg-blef-cream overflow-hidden transition-[max-height] duration-300 ${
-                    mobileDropdownOpen ? "max-h-[600px]" : "max-h-0"
+                  className={`list-none m-0 bg-blef-cream rounded-xl overflow-hidden transition-[max-height] duration-300 ${
+                    mobileDropdownOpen ? "max-h-[600px] mb-3 p-2" : "max-h-0"
                   }`}
                 >
                   {link.dropdown.map((item) => (
@@ -236,7 +269,7 @@ const Header = () => {
                       <Link
                         to={item.href}
                         onClick={() => setMobileOpen(false)}
-                        className="block px-6 py-3 text-[0.88rem] font-medium text-blef-green-dark border-b border-neutral-200"
+                        className="block px-4 py-2.5 text-[0.84rem] font-medium text-blef-green-dark hover:text-blef-gold"
                       >
                         {item.label}
                       </Link>
@@ -258,11 +291,11 @@ const Header = () => {
           )}
           <li className="list-none pt-4">
             <Link
-              to="/donate"
+              to="/get-involved"
               onClick={() => setMobileOpen(false)}
               className="flex justify-center w-full px-6 py-2.5 rounded-full bg-blef-green text-white font-bold text-[0.88rem]"
             >
-              Donate Now
+              Get Involved
             </Link>
           </li>
         </ul>

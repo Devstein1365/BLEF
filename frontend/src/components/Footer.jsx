@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import {
   FaFacebookF,
   FaTwitter,
@@ -7,190 +8,144 @@ import {
   FaEnvelope,
   FaMapMarkerAlt,
   FaHeart,
-  FaArrowUp,
 } from "react-icons/fa";
-import logo from "../assets/logo.png"; // adjust path if needed
+import logo from "../assets/logo-2.png";
 
 const THEMATIC_LINKS = [
-  { label: "Entrepreneurship & Business Development", href: "/what-we-do/entrepreneurship-business-development" },
+  { label: "Entrepreneurship & Business Dev.", href: "/what-we-do/entrepreneurship-business-development" },
   { label: "Youth Economic Empowerment", href: "/what-we-do/youth-economic-empowerment" },
   { label: "Women's Economic Empowerment", href: "/what-we-do/womens-economic-empowerment" },
   { label: "STEM Education & Innovation", href: "/what-we-do/stem-education-innovation" },
   { label: "Access to Finance & Markets", href: "/what-we-do/access-to-finance-markets" },
   { label: "Inclusive Entrepreneurship", href: "/what-we-do/inclusive-entrepreneurship-social-impact" },
-  { label: "Sustainable Enterprise Development", href: "/what-we-do/legacy-sustainable-enterprise-development" },
+  { label: "Legacy & Sustainable Enterprise", href: "/what-we-do/legacy-sustainable-enterprise-development" },
 ];
 
 const QUICK_LINKS = [
   { label: "About BLEF", href: "/about" },
-  { label: "Our Focus Areas", href: "/what-we-do" },
-  { label: "Projects & Impact", href: "/impact" },
-  { label: "Get Involved / Partner", href: "/get-involved" },
-  { label: "News & Media", href: "/media" },
-  { label: "Contact Us", href: "/contact" },
-];
-
-const SOCIAL_LINKS = [
-  { icon: FaFacebookF, href: "https://facebook.com", label: "Facebook" },
-  { icon: FaTwitter, href: "https://twitter.com", label: "Twitter / X" },
-  { icon: FaInstagram, href: "https://instagram.com", label: "Instagram" },
-  { icon: FaLinkedinIn, href: "https://linkedin.com", label: "LinkedIn" },
+  { label: "What We Do", href: "/what-we-do" },
+  { label: "Impact & MEL", href: "/impact" },
+  { label: "Events & Media", href: "/media" },
+  { label: "Get Involved & Donate", href: "/get-involved" },
+  { label: "Secretariat Contact", href: "/contact" },
 ];
 
 const Footer = () => {
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
   return (
-    <footer className="bg-blef-charcoal text-white pt-16 pb-10 border-t border-white/10 relative">
-      <div className="max-w-[1280px] mx-auto px-6">
-        {/* Main Multi-Column Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 pb-14 border-b border-white/10">
+    <footer className="bg-neutral-950 text-white border-t border-neutral-800">
+      <div className="max-w-[1280px] mx-auto px-6 pt-16 pb-12">
+        
+        {/* Main 4-Column Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-12 pb-14 border-b border-neutral-800">
           
-          {/* Column 1: Brand & Mission (4 cols) */}
-          <div className="lg:col-span-4 flex flex-col">
-            <a href="/" className="flex items-center gap-3 mb-5">
-              <img
-                src={logo}
-                alt="Better Life Foundation Logo"
-                className="h-12 w-auto bg-white/90 p-1.5 rounded-lg"
-              />
-              <div>
-                <span className="font-extrabold text-lg text-white tracking-tight block">
-                  Better Life Foundation
-                </span>
-                <span className="text-[0.68rem] text-blef-gold uppercase font-bold tracking-wider">
-                  BLEF Nigeria
-                </span>
-              </div>
-            </a>
-
-            <p className="text-sm text-neutral-300 leading-relaxed max-w-sm mb-6">
-              Empowering People. Building Enterprises. Creating Legacies. A catalytic NGO dedicated to grassroots enterprise, sustainable funding access, and inclusive growth across Nigeria.
-            </p>
-
-            {/* Social Channels */}
-            <div className="flex items-center gap-2.5 mt-auto">
-              {SOCIAL_LINKS.map((item, idx) => {
-                const Icon = item.icon;
-                return (
-                  <a
-                    key={idx}
-                    href={item.href}
-                    target="_blank"
-                    rel="noreferrer"
-                    aria-label={item.label}
-                    className="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-neutral-300 hover:bg-blef-green hover:text-white hover:border-blef-green transition-all duration-200"
-                  >
-                    <Icon size={13} />
-                  </a>
-                );
-              })}
+          {/* Col 1: Brand & Tagline (4 cols) */}
+          <div className="lg:col-span-4 flex flex-col justify-between">
+            <div>
+              <Link to="/" className="flex items-center gap-3 mb-4">
+                <img src={logo} alt="BLEF Logo" className="h-12 w-auto brightness-110" />
+                <div className="flex flex-col leading-tight">
+                  <span className="font-extrabold text-base text-white tracking-tight">
+                    Better Life
+                  </span>
+                  <span className="text-[0.68rem] font-bold uppercase tracking-wider text-blef-gold-light">
+                    Entrepreneurship Foundation
+                  </span>
+                </div>
+              </Link>
+              <p className="text-xs sm:text-sm text-neutral-400 leading-relaxed mb-6 max-w-sm">
+                Empowering people, building enterprises, and creating legacies across Africa through practical business education, mentorship, and peer accountability.
+              </p>
             </div>
-          </div>
 
-          {/* Column 2: Quick Links (2 cols) */}
-          <div className="lg:col-span-2">
-            <h4 className="text-xs font-extrabold uppercase tracking-widest text-blef-gold mb-5 pb-1 border-b border-white/10 inline-block">
-              Quick Links
-            </h4>
-            <ul className="space-y-2.5 text-sm text-neutral-300 list-none p-0 m-0">
-              {QUICK_LINKS.map((link) => (
-                <li key={link.label}>
-                  <a
-                    href={link.href}
-                    className="hover:text-blef-gold-light hover:translate-x-1 inline-block transition-transform duration-200"
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Column 3: Thematic Areas (3 cols) */}
-          <div className="lg:col-span-3">
-            <h4 className="text-xs font-extrabold uppercase tracking-widest text-blef-gold mb-5 pb-1 border-b border-white/10 inline-block">
-              Our Thematic Areas
-            </h4>
-            <ul className="space-y-2.5 text-xs sm:text-sm text-neutral-300 list-none p-0 m-0">
-              {THEMATIC_LINKS.map((area) => (
-                <li key={area.label}>
-                  <a
-                    href={area.href}
-                    className="hover:text-blef-gold-light hover:translate-x-1 inline-block transition-transform duration-200 leading-snug"
-                  >
-                    {area.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Column 4: Contact & Secretariat (3 cols) */}
-          <div className="lg:col-span-3">
-            <h4 className="text-xs font-extrabold uppercase tracking-widest text-blef-gold mb-5 pb-1 border-b border-white/10 inline-block">
-              Secretariat
-            </h4>
-            <ul className="space-y-3.5 text-sm text-neutral-300 list-none p-0 m-0">
-              <li className="flex items-start gap-3">
-                <FaMapMarkerAlt className="text-blef-gold mt-1 shrink-0" size={14} />
-                <span className="leading-snug">
-                  Abuja Secretariat, Federal Capital Territory, Nigeria
-                </span>
-              </li>
-              <li className="flex items-center gap-3">
-                <FaPhoneAlt className="text-blef-gold shrink-0" size={13} />
-                <a href="tel:+2340000000000" className="hover:text-white transition">
-                  +234 000 000 0000
-                </a>
-              </li>
-              <li className="flex items-center gap-3">
-                <FaEnvelope className="text-blef-gold shrink-0" size={13} />
-                <a
-                  href="mailto:info@betterlifefoundation.org"
-                  className="hover:text-white transition truncate"
-                >
-                  info@betterlifefoundation.org
-                </a>
-              </li>
-            </ul>
-
-            <div className="mt-6 pt-5 border-t border-white/10">
-              <a
-                href="/donate"
-                className="inline-flex items-center justify-center w-full py-2.5 px-4 rounded-full bg-blef-gold text-blef-charcoal font-bold text-xs uppercase tracking-wider hover:bg-blef-gold-light transition-all shadow-md shadow-blef-gold/20"
-              >
-                <FaHeart className="mr-2 text-blef-green-dark" size={12} />
-                Support Our Interventions
+            <div className="flex items-center gap-3">
+              <a href="#" aria-label="Facebook" className="w-8 h-8 rounded-full bg-white/10 hover:bg-blef-green hover:text-white text-neutral-300 flex items-center justify-center transition">
+                <FaFacebookF size={12} />
+              </a>
+              <a href="#" aria-label="Twitter / X" className="w-8 h-8 rounded-full bg-white/10 hover:bg-blef-green hover:text-white text-neutral-300 flex items-center justify-center transition">
+                <FaTwitter size={12} />
+              </a>
+              <a href="#" aria-label="Instagram" className="w-8 h-8 rounded-full bg-white/10 hover:bg-blef-green hover:text-white text-neutral-300 flex items-center justify-center transition">
+                <FaInstagram size={12} />
+              </a>
+              <a href="#" aria-label="LinkedIn" className="w-8 h-8 rounded-full bg-white/10 hover:bg-blef-green hover:text-white text-neutral-300 flex items-center justify-center transition">
+                <FaLinkedinIn size={12} />
               </a>
             </div>
           </div>
+
+          {/* Col 2: Thematic Areas (3 cols) */}
+          <div className="lg:col-span-3">
+            <h3 className="text-xs font-bold uppercase tracking-widest text-blef-gold-light mb-4">
+              7 Thematic Areas
+            </h3>
+            <ul className="space-y-2 text-xs text-neutral-400">
+              {THEMATIC_LINKS.map((item, idx) => (
+                <li key={idx}>
+                  <Link to={item.href} className="hover:text-white hover:underline transition">
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Col 3: Quick Navigation (2 cols) */}
+          <div className="lg:col-span-2">
+            <h3 className="text-xs font-bold uppercase tracking-widest text-blef-gold-light mb-4">
+              Quick Links
+            </h3>
+            <ul className="space-y-2 text-xs text-neutral-400">
+              {QUICK_LINKS.map((item, idx) => (
+                <li key={idx}>
+                  <Link to={item.href} className="hover:text-white hover:underline transition">
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Col 4: Secretariat Contact (3 cols) */}
+          <div className="lg:col-span-3">
+            <h3 className="text-xs font-bold uppercase tracking-widest text-blef-gold-light mb-4">
+              Secretariat Info
+            </h3>
+            <div className="space-y-3 text-xs text-neutral-400">
+              <div className="flex items-start gap-2.5">
+                <FaMapMarkerAlt className="text-blef-gold shrink-0 mt-0.5" />
+                <span>Abuja, Federal Capital Territory, Nigeria</span>
+              </div>
+              <div className="flex items-center gap-2.5">
+                <FaEnvelope className="text-blef-gold shrink-0" />
+                <span>info@betterlifefoundation.org</span>
+              </div>
+              <div className="flex items-center gap-2.5">
+                <FaPhoneAlt className="text-blef-gold shrink-0" />
+                <span>+234 000 000 0000</span>
+              </div>
+            </div>
+
+            <div className="mt-6">
+              <Link
+                to="/get-involved"
+                className="inline-flex items-center justify-center w-full py-2.5 px-4 rounded-xl bg-blef-green hover:bg-blef-green-dark text-white font-bold text-xs transition"
+              >
+                Join a Session / Partner
+              </Link>
+            </div>
+          </div>
+
         </div>
 
-        {/* Bottom Bar */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-neutral-400">
-          <p>
-            © {new Date().getFullYear()} Better Life Foundation (BLEF). All rights reserved.
-          </p>
-
+        {/* Bottom Strip */}
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-neutral-500">
+          <p>© {new Date().getFullYear()} Better Life Entrepreneurship Foundation (BLEF). All rights reserved.</p>
           <div className="flex items-center gap-6">
-            <a href="/privacy" className="hover:text-white transition">
-              Privacy Policy
-            </a>
-            <a href="/terms" className="hover:text-white transition">
-              Terms of Engagement
-            </a>
-            <button
-              onClick={scrollToTop}
-              className="flex items-center gap-1 text-blef-gold hover:text-blef-gold-light transition cursor-pointer"
-            >
-              <span>Back to Top</span>
-              <FaArrowUp size={10} />
-            </button>
+            <span className="text-blef-gold font-medium">Grass Green & Gold Standard</span>
+            <Link to="/contact" className="hover:text-white transition">Privacy & Governance</Link>
           </div>
         </div>
+
       </div>
     </footer>
   );

@@ -1,25 +1,7 @@
 import { Link } from "react-router-dom";
-import { FaChevronRight, FaShieldAlt, FaUsers, FaGraduationCap } from "react-icons/fa";
+import { FaChevronRight, FaCompass, FaCogs, FaHandsHelping } from "react-icons/fa";
 
-const QUICK_BADGES = [
-  {
-    icon: FaGraduationCap,
-    title: "Practical Business Education",
-    subtitle: "Strategy & Systems, Marketing, and Finance",
-  },
-  {
-    icon: FaUsers,
-    title: "Peer Accountability",
-    subtitle: "Active community cohorts after training",
-  },
-  {
-    icon: FaShieldAlt,
-    title: "Based in Abuja",
-    subtitle: "Expanding across Africa",
-  },
-];
-
-const AboutHero = () => {
+const WhatWeDoHero = () => {
   return (
     <section className="relative bg-blef-green-dark text-white pt-24 pb-20 lg:pt-32 lg:pb-28 overflow-hidden">
       <div
@@ -40,21 +22,21 @@ const AboutHero = () => {
             Home
           </Link>
           <FaChevronRight size={9} className="text-white/40" />
-          <span className="text-blef-gold-light">About Us</span>
+          <span className="text-blef-gold-light">What We Do</span>
         </nav>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           <div className="lg:col-span-8">
             <span className="inline-block px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-sm text-blef-gold-light text-xs font-bold uppercase tracking-widest border border-white/15">
-              Who We Are
+              Programmatic Architecture
             </span>
 
             <h1 className="mt-6 text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.12]">
-              Building Businesses <span className="text-blef-gold-light">That Last</span>
+              From Grassroots to <span className="text-blef-gold-light">Gold Standard</span>
             </h1>
 
             <p className="mt-6 text-base sm:text-lg lg:text-xl text-white/90 leading-relaxed font-normal max-w-2xl">
-              Better Life Entrepreneurship Foundation (BLEF) exists to bridge a critical gap in Africa’s entrepreneurial landscape: the lack of accessible, practical business education for first-generation entrepreneurs and SMEs. Where you start should never determine where you can go.
+              We offer free, partner-supported business training designed specifically for first-generation entrepreneurs and SMEs in Africa. Our programs are practical, culturally relevant, and built around real challenges faced by African enterprises.
             </p>
 
             <div className="mt-8 inline-flex items-center gap-3 px-5 py-3 rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm">
@@ -66,8 +48,24 @@ const AboutHero = () => {
           </div>
 
           <div className="lg:col-span-4 flex flex-col gap-4">
-            {QUICK_BADGES.map((badge, idx) => {
-              const Icon = badge.icon;
+            {[
+              {
+                icon: FaCompass,
+                title: "Localized Curricula",
+                desc: "Designed around African market realities, not imported theory.",
+              },
+              {
+                icon: FaCogs,
+                title: "Strategy, Marketing & Finance",
+                desc: "Closing the gap in the 3 areas where African SMEs struggle most.",
+              },
+              {
+                icon: FaHandsHelping,
+                title: "Post-Training Accountability",
+                desc: "Peer cohorts that keep founders supported long after training ends.",
+              },
+            ].map((item, idx) => {
+              const Icon = item.icon;
               return (
                 <div
                   key={idx}
@@ -78,10 +76,10 @@ const AboutHero = () => {
                   </div>
                   <div>
                     <h2 className="text-sm font-bold text-white tracking-wide">
-                      {badge.title}
+                      {item.title}
                     </h2>
                     <p className="text-xs text-white/70 mt-0.5 leading-normal">
-                      {badge.subtitle}
+                      {item.desc}
                     </p>
                   </div>
                 </div>
@@ -94,4 +92,4 @@ const AboutHero = () => {
   );
 };
 
-export default AboutHero;
+export default WhatWeDoHero;

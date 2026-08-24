@@ -6,12 +6,13 @@ import {
   FaInstagram,
   FaLinkedinIn,
   FaPhoneAlt,
-  FaEnvelope,
+  FaMapMarkerAlt,
   FaChevronDown,
   FaBars,
   FaTimes,
 } from "react-icons/fa";
 import logo from "../assets/logo-2.png";
+import { BRAND } from "../utils/constants";
 
 const THEMATIC_AREAS = [
   { label: "Entrepreneurship & Business Development", href: "/what-we-do/entrepreneurship-business-development" },
@@ -46,7 +47,6 @@ const Header = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Smooth hover handlers for desktop with debounced close
   const handleMouseEnter = () => {
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
     setDropdownOpen(true);
@@ -74,48 +74,55 @@ const Header = () => {
       {/* Utility strip */}
       <div className="hidden md:block bg-blef-green-dark text-white text-[0.78rem]">
         <div className="max-w-[1280px] mx-auto px-6 py-[0.45rem] flex items-center justify-between">
-          <div className="flex gap-6">
+          <div className="flex items-center gap-6">
+            <span className="flex items-center gap-1.5 opacity-90">
+              <FaMapMarkerAlt size={11} className="text-blef-gold" />
+              <span>{BRAND.address}</span>
+            </span>
             <a
-              href="tel:+2340000000000"
-              className="flex items-center gap-2 opacity-90 hover:opacity-100 hover:text-blef-gold-light transition"
+              href={`tel:${BRAND.phone1Raw}`}
+              className="flex items-center gap-1.5 opacity-90 hover:opacity-100 hover:text-blef-gold-light transition"
             >
-              <FaPhoneAlt size={12} />
-              <span>+234 000 000 0000</span>
+              <FaPhoneAlt size={11} />
+              <span>{BRAND.phone1}</span>
             </a>
             <a
-              href="mailto:info@betterlifefoundation.org"
-              className="flex items-center gap-2 opacity-90 hover:opacity-100 hover:text-blef-gold-light transition"
+              href={`tel:${BRAND.phone2Raw}`}
+              className="flex items-center gap-1.5 opacity-90 hover:opacity-100 hover:text-blef-gold-light transition"
             >
-              <FaEnvelope size={12} />
-              <span>info@betterlifefoundation.org</span>
+              <FaPhoneAlt size={11} />
+              <span>{BRAND.phone2}</span>
             </a>
           </div>
 
           <div className="flex gap-3.5">
-            <a href="#" aria-label="Facebook" className="opacity-90 hover:opacity-100 hover:text-blef-gold-light transition">
-              <FaFacebookF size={13} />
+            <a href="#" aria-label="Facebook" className="opacity-90 hover:text-blef-gold-light transition">
+              <FaFacebookF size={12} />
             </a>
-            <a href="#" aria-label="Twitter / X" className="opacity-90 hover:opacity-100 hover:text-blef-gold-light transition">
-              <FaTwitter size={13} />
+            <a href="#" aria-label="Twitter / X" className="opacity-90 hover:text-blef-gold-light transition">
+              <FaTwitter size={12} />
             </a>
-            <a href="#" aria-label="Instagram" className="opacity-90 hover:opacity-100 hover:text-blef-gold-light transition">
-              <FaInstagram size={13} />
+            <a href="#" aria-label="Instagram" className="opacity-90 hover:text-blef-gold-light transition">
+              <FaInstagram size={12} />
             </a>
-            <a href="#" aria-label="LinkedIn" className="opacity-90 hover:opacity-100 hover:text-blef-gold-light transition">
-              <FaLinkedinIn size={13} />
+            <a href="#" aria-label="LinkedIn" className="opacity-90 hover:text-blef-gold-light transition">
+              <FaLinkedinIn size={12} />
             </a>
           </div>
         </div>
       </div>
 
-      {/* Main nav */}
+      {/* Main navigation */}
       <div className="bg-white border-b border-neutral-200">
         <div className="max-w-[1280px] mx-auto px-6 py-3 flex items-center justify-between gap-6">
           <Link to="/" className="flex items-center gap-3 shrink-0">
-            <img src={logo} alt="Better Life Entrepreneurship Foundation" className="h-11 sm:h-[52px] w-auto" />
+            <img src={logo} alt={BRAND.name} className="h-11 sm:h-[52px] w-auto" />
             <div className="flex flex-col leading-tight">
-              <span className="font-extrabold text-[1.05rem] text-blef-green-dark tracking-tight">
-                Better Life Foundation
+              <span className="font-extrabold text-[1.02rem] text-blef-green-dark tracking-tight leading-none">
+                Better Life
+              </span>
+              <span className="text-[0.68rem] font-bold uppercase tracking-wider text-blef-gold">
+                Entrepreneurship Foundation
               </span>
             </div>
           </Link>
@@ -158,7 +165,6 @@ const Header = () => {
                       )}
                     </NavLink>
 
-                    {/* Desktop Dropdown Popover */}
                     <div
                       className={`absolute top-full left-1/2 -translate-x-1/2 pt-2 transition-all duration-200 ${
                         dropdownOpen
@@ -211,7 +217,7 @@ const Header = () => {
           <div className="flex items-center gap-4 shrink-0">
             <Link
               to="/get-involved"
-              className="hidden lg:inline-flex items-center px-6 py-2.5 rounded-full bg-blef-green text-white font-bold text-[0.88rem] whitespace-nowrap bg-gradient-to-br from-blef-green to-blef-green hover:from-blef-green hover:to-blef-gold hover:-translate-y-0.5 hover:shadow-[0_6px_18px_rgba(212,160,23,0.35)] transition-all duration-300"
+              className="hidden lg:inline-flex items-center px-6 py-2.5 rounded-full bg-blef-green text-white font-bold text-[0.88rem] whitespace-nowrap hover:bg-blef-green-dark hover:-translate-y-0.5 hover:shadow-[0_6px_18px_rgba(20,82,42,0.35)] transition-all duration-300"
             >
               Get Involved
             </Link>
@@ -228,7 +234,7 @@ const Header = () => {
         </div>
       </div>
 
-      {/* Mobile menu */}
+      {/* Mobile nav drawer */}
       <div
         className={`lg:hidden overflow-hidden bg-white border-t border-neutral-200 transition-[max-height] duration-300 ${
           mobileOpen ? "max-h-[calc(100vh-90px)] overflow-y-auto" : "max-h-0"

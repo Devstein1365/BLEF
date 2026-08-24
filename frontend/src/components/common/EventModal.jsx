@@ -1,20 +1,17 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FaTimes, FaCalendarAlt, FaMapMarkerAlt, FaRocket, FaArrowRight } from "react-icons/fa";
-import ayesLogo from "../../assets/event.jpeg"; // verify your asset filename
-
-// Target event expiry date (e.g., Nov 30, 2026)
-const EVENT_EXPIRY_DATE = new Date("2026-11-30T23:59:59");
+import ayesLogo from "../../assets/event.jpeg";
+import { BRAND } from "../../utils/constants";
 
 const EventModalAlert = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
-    const isExpired = new Date() > EVENT_EXPIRY_DATE;
+    const isExpired = new Date() > BRAND.ayesEventDate;
     const isDismissed = sessionStorage.getItem("blef_ayes_alert_dismissed");
 
     if (!isExpired && !isDismissed) {
-      // Pop up 1 second after page loads for smooth entrance
       const timer = setTimeout(() => {
         setIsOpen(true);
       }, 1000);
@@ -30,10 +27,8 @@ const EventModalAlert = () => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-[2000] flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-fade-in">
+    <div className="fixed inset-0 z-[2000] flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
       <div className="relative w-full max-w-lg bg-white rounded-3xl overflow-hidden shadow-2xl border border-neutral-200">
-        
-        {/* Close Button */}
         <button
           onClick={handleDismiss}
           aria-label="Close event alert"
@@ -42,7 +37,6 @@ const EventModalAlert = () => {
           <FaTimes size={15} />
         </button>
 
-        {/* Modal Header & Graphic */}
         <div className="bg-gradient-to-br from-blef-green-dark via-blef-green to-neutral-900 p-6 text-white text-center relative overflow-hidden">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blef-gold/20 text-blef-gold-light text-[0.72rem] font-extrabold uppercase tracking-widest border border-blef-gold/30 mb-3">
             <FaRocket size={10} />
@@ -52,7 +46,7 @@ const EventModalAlert = () => {
           <div className="bg-white p-4 rounded-2xl max-w-[180px] mx-auto mb-3 shadow-lg">
             <img
               src={ayesLogo}
-              alt="African Youth Entrepreneurs Summit (AYES) 2026"
+              alt="African Youth Entrepreneurs Summit 2026"
               className="w-full h-auto object-contain"
             />
           </div>
@@ -65,16 +59,15 @@ const EventModalAlert = () => {
           </p>
         </div>
 
-        {/* Modal Body */}
         <div className="p-6 sm:p-7">
           <div className="flex items-center justify-center gap-4 text-xs font-semibold text-neutral-600 mb-4 pb-3 border-b border-neutral-100">
             <span className="flex items-center gap-1.5">
               <FaCalendarAlt className="text-blef-gold" />
-              <span>2026 Convening</span>
+              <span>{BRAND.ayesDisplayDate}</span>
             </span>
             <span className="flex items-center gap-1.5">
               <FaMapMarkerAlt className="text-blef-gold" />
-              <span>Abuja & Virtual Hybrid</span>
+              <span>Abuja, Nigeria</span>
             </span>
           </div>
 
@@ -96,11 +89,10 @@ const EventModalAlert = () => {
               onClick={handleDismiss}
               className="py-3 px-5 rounded-full border border-neutral-300 hover:bg-neutral-100 text-neutral-700 font-bold text-xs uppercase tracking-wider transition cursor-pointer"
             >
-              Remind Me Later
+              Dismiss
             </button>
           </div>
         </div>
-
       </div>
     </div>
   );

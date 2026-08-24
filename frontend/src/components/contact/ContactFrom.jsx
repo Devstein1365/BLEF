@@ -1,11 +1,13 @@
 import { useState } from "react";
-import { FaMapMarkerAlt, FaEnvelope, FaPhoneAlt, FaPaperPlane, FaCheckCircle } from "react-icons/fa";
+import { FaMapMarkerAlt, FaPhoneAlt, FaPaperPlane, FaCheckCircle } from "react-icons/fa";
+import { BRAND } from "../../utils/constants";
 
 const ContactFormSection = () => {
   const [submitted, setSubmitted] = useState(false);
   const [form, setForm] = useState({
     name: "",
     email: "",
+    phone: "",
     subject: "General Inquiry",
     message: "",
   });
@@ -37,21 +39,9 @@ const ContactFormSection = () => {
                   <FaMapMarkerAlt size={16} />
                 </div>
                 <div>
-                  <h4 className="text-sm font-bold text-blef-charcoal">Location</h4>
+                  <h4 className="text-sm font-bold text-blef-charcoal">Secretariat Address</h4>
                   <p className="text-xs text-neutral-600 mt-0.5">
-                    Abuja, Federal Capital Territory, Nigeria
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-xl bg-blef-green/10 text-blef-green flex items-center justify-center shrink-0 mt-1">
-                  <FaEnvelope size={16} />
-                </div>
-                <div>
-                  <h4 className="text-sm font-bold text-blef-charcoal">Email Inquiries</h4>
-                  <p className="text-xs text-neutral-600 mt-0.5">
-                    info@betterlifefoundation.org
+                    {BRAND.address}
                   </p>
                 </div>
               </div>
@@ -61,10 +51,15 @@ const ContactFormSection = () => {
                   <FaPhoneAlt size={16} />
                 </div>
                 <div>
-                  <h4 className="text-sm font-bold text-blef-charcoal">Phone Line</h4>
-                  <p className="text-xs text-neutral-600 mt-0.5">
-                    +234 000 000 0000
-                  </p>
+                  <h4 className="text-sm font-bold text-blef-charcoal">Direct Phone Lines</h4>
+                  <div className="flex flex-col gap-0.5 mt-0.5">
+                    <a href={`tel:${BRAND.phone1Raw}`} className="text-xs text-neutral-600 hover:text-blef-green">
+                      {BRAND.phone1}
+                    </a>
+                    <a href={`tel:${BRAND.phone2Raw}`} className="text-xs text-neutral-600 hover:text-blef-green">
+                      {BRAND.phone2}
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -79,9 +74,9 @@ const ContactFormSection = () => {
               {submitted ? (
                 <div className="p-8 bg-blef-cream rounded-2xl border border-blef-green/20 text-center">
                   <FaCheckCircle className="text-blef-green text-4xl mx-auto mb-3" />
-                  <h4 className="text-lg font-bold text-blef-charcoal">Message Sent Successfully</h4>
+                  <h4 className="text-lg font-bold text-blef-charcoal">Message Submitted</h4>
                   <p className="text-xs text-neutral-600 mt-2">
-                    Thank you for reaching out. The secretariat will respond shortly.
+                    Thank you for reaching out. The secretariat team will respond shortly.
                   </p>
                   <button
                     onClick={() => setSubmitted(false)}
@@ -109,14 +104,14 @@ const ContactFormSection = () => {
 
                     <div>
                       <label className="block text-xs font-bold uppercase tracking-wider text-neutral-700 mb-2">
-                        Email Address
+                        Phone Number
                       </label>
                       <input
-                        type="email"
+                        type="tel"
                         required
-                        value={form.email}
-                        onChange={(e) => setForm({ ...form, email: e.target.value })}
-                        placeholder="your@email.com"
+                        value={form.phone}
+                        onChange={(e) => setForm({ ...form, phone: e.target.value })}
+                        placeholder="+234..."
                         className="w-full px-4 py-3 rounded-xl border border-neutral-300 text-sm focus:outline-none focus:border-blef-green bg-white"
                       />
                     </div>

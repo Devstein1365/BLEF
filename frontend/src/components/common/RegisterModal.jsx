@@ -42,7 +42,7 @@ const SummitRegisterModal = ({ isOpen, onClose }) => {
                 AYES 2026 Delegate Registration
               </h3>
               <p className="text-xs text-neutral-500">
-                Innovate. Empower. Transform Africa.[cite: 1]
+                Innovate. Empower. Transform Africa.
               </p>
             </div>
           </div>
@@ -54,7 +54,7 @@ const SummitRegisterModal = ({ isOpen, onClose }) => {
                 Registration Confirmed!
               </h4>
               <p className="text-xs text-neutral-600 mt-2 max-w-xs mx-auto leading-relaxed">
-                Thank you for registering for the African Youth Entrepreneurs Summit 2026[cite: 1]. Your summit delegate pass details have been sent to your email.
+                Thank you for registering for the African Youth Entrepreneurs Summit 2026. Your summit delegate pass details have been sent to your email.
               </p>
               <button
                 onClick={() => {
@@ -122,8 +122,8 @@ const SummitRegisterModal = ({ isOpen, onClose }) => {
                     onChange={(e) => setForm({ ...form, attendanceMode: e.target.value })}
                     className="w-full px-3.5 py-2.5 rounded-xl border border-neutral-300 text-xs focus:outline-none focus:border-blef-green bg-white"
                   >
-                    <option>Physical (Abuja FCT)[cite: 1]</option>
-                    <option>Virtual / Pan-African Stream[cite: 1]</option>
+                    <option>Physical (Abuja FCT)</option>
+                    <option>Virtual / Pan-African Stream</option>
                   </select>
                 </div>
 
@@ -136,10 +136,10 @@ const SummitRegisterModal = ({ isOpen, onClose }) => {
                     onChange={(e) => setForm({ ...form, businessStage: e.target.value })}
                     className="w-full px-3.5 py-2.5 rounded-xl border border-neutral-300 text-xs focus:outline-none focus:border-blef-green bg-white"
                   >
-                    <option>Aspiring / Ideation[cite: 1]</option>
-                    <option>Early Stage / Micro-SME[cite: 1]</option>
-                    <option>Growth / Scaling[cite: 1]</option>
-                    <option>Student / Campus Innovator[cite: 1]</option>
+                    <option>Aspiring / Ideation</option>
+                    <option>Early Stage / Micro-SME</option>
+                    <option>Growth / Scaling</option>
+                    <option>Student / Campus Innovator</option>
                   </select>
                 </div>
               </div>

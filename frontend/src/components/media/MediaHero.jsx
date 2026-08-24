@@ -1,20 +1,17 @@
 import { Link } from "react-router-dom";
 import { FaChevronRight, FaCalendarAlt, FaBullhorn, FaCamera } from "react-icons/fa";
+import mediaHeroBg from "../../assets/media-hero-bg.jpeg";
 
 const MediaHero = () => {
   return (
     <section className="relative bg-blef-green-dark text-white pt-24 pb-20 lg:pt-32 lg:pb-28 overflow-hidden">
+      {/* Background Image with Dark Gradient Overlay */}
       <div
-        className="absolute inset-0 bg-cover bg-center opacity-15 mix-blend-overlay"
-        style={{
-          backgroundImage:
-            "linear-gradient(135deg, #14522A 0%, #1F7A3C 60%, #8a6a12 140%)",
-        }}
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: `url(${mediaHeroBg})` }}
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-blef-green-dark/80 via-blef-green-dark to-blef-green-dark" />
-
+      <div className="absolute inset-0 bg-gradient-to-r from-blef-green-dark/95 via-blef-green-dark/85 to-black/80" />
       <div className="absolute -top-24 -right-24 w-96 h-96 bg-blef-gold/20 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-blef-green/30 rounded-full blur-3xl pointer-events-none" />
 
       <div className="relative max-w-[1280px] mx-auto px-6">
         <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs font-semibold text-white/70 mb-8">
@@ -35,26 +32,11 @@ const MediaHero = () => {
               Events & <span className="text-blef-gold-light">Media Center</span>
             </h1>
 
-            <p className="mt-6 text-base sm:text-lg lg:text-xl text-white/90 leading-relaxed font-normal max-w-2xl">
+            <p className="mt-6 text-[14px] sm:text-[14px] lg:text-[16px] text-white/90 leading-relaxed font-normal max-w-2xl">
               Real transformation happens when entrepreneurs gather, learn, and hold each other accountable. Explore our summits, bootcamps, school outreaches, and press releases.
             </p>
 
-            <div className="mt-8 flex flex-wrap items-center gap-4">
-              <a
-                href="#events"
-                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-blef-gold text-blef-charcoal font-bold text-sm hover:bg-blef-gold-light transition shadow-lg"
-              >
-                <FaCalendarAlt size={13} />
-                <span>Explore Events & Summits</span>
-              </a>
-              <a
-                href="#media-kit"
-                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full border border-white/30 text-white font-bold text-sm hover:bg-white hover:text-blef-green-dark transition"
-              >
-                <FaBullhorn size={13} />
-                <span>Media Kit & Inquiries</span>
-              </a>
-            </div>
+            
           </div>
 
           <div className="lg:col-span-4 flex flex-col gap-4">
@@ -74,16 +56,16 @@ const MediaHero = () => {
               return (
                 <div
                   key={idx}
-                  className="flex items-start gap-4 p-5 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md hover:bg-white/10 transition-all duration-300"
+                  className="flex items-start gap-4 p-5 rounded-2xl bg-white/10 border border-white/15 backdrop-blur-md hover:bg-white/15 transition-all duration-300"
                 >
-                  <div className="w-11 h-11 rounded-xl bg-blef-green/30 border border-white/10 flex items-center justify-center text-blef-gold-light shrink-0">
+                  <div className="w-11 h-11 rounded-xl bg-blef-green/40 border border-white/15 flex items-center justify-center text-blef-gold-light shrink-0">
                     <Icon size={18} />
                   </div>
                   <div>
                     <h2 className="text-sm font-bold text-white tracking-wide">
                       {item.title}
                     </h2>
-                    <p className="text-xs text-white/70 mt-0.5 leading-normal">
+                    <p className="text-xs text-white/80 mt-0.5 leading-normal">
                       {item.desc}
                     </p>
                   </div>

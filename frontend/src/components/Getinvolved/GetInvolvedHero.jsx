@@ -1,20 +1,17 @@
 import { Link } from "react-router-dom";
-import { FaChevronRight, FaHandsHelping, FaHeart, FaUserCheck } from "react-icons/fa";
+import { FaChevronRight } from "react-icons/fa";
+import getInvolvedHeroBg from "../../assets/get-involved-hero-bg.jpeg";
 
 const GetInvolvedHero = () => {
   return (
     <section className="relative bg-blef-green-dark text-white pt-24 pb-20 lg:pt-32 lg:pb-28 overflow-hidden">
+      {/* Background Image with Dark Gradient Overlay */}
       <div
-        className="absolute inset-0 bg-cover bg-center opacity-15 mix-blend-overlay"
-        style={{
-          backgroundImage:
-            "linear-gradient(135deg, #14522A 0%, #1F7A3C 60%, #8a6a12 140%)",
-        }}
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: `url(${getInvolvedHeroBg})` }}
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-blef-green-dark/80 via-blef-green-dark to-blef-green-dark" />
-
+      <div className="absolute inset-0 bg-gradient-to-r from-blef-green-dark/95 via-blef-green-dark/85 to-black/80" />
       <div className="absolute -top-24 -right-24 w-96 h-96 bg-blef-gold/20 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-blef-green/30 rounded-full blur-3xl pointer-events-none" />
 
       <div className="relative max-w-[1280px] mx-auto px-6">
         <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs font-semibold text-white/70 mb-8">
@@ -35,7 +32,7 @@ const GetInvolvedHero = () => {
             <span className="text-blef-gold-light">Build a Generation</span>
           </h1>
 
-          <p className="mt-6 text-base sm:text-lg lg:text-xl text-white/90 leading-relaxed font-normal">
+          <p className="mt-6 text-[14px] sm:text-[14px] lg:text-[16px] text-white/90 leading-relaxed font-normal">
             BLEF runs on the belief that ordinary people, organizations, and partners can change the trajectory of a generation of entrepreneurs. There is a place for you in that work.
           </p>
 

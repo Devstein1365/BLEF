@@ -215,12 +215,12 @@ const Header = () => {
           </nav>
 
           <div className="flex items-center gap-4 shrink-0">
-            <Link
+            {/* <Link
               to="/get-involved"
               className="hidden lg:inline-flex items-center px-6 py-2.5 rounded-full bg-blef-green text-white font-bold text-[0.88rem] whitespace-nowrap hover:bg-blef-green-dark hover:-translate-y-0.5 hover:shadow-[0_6px_18px_rgba(20,82,42,0.35)] transition-all duration-300"
             >
               Get Involved
-            </Link>
+            </Link> */}
 
             <button
               className="lg:hidden flex items-center justify-center w-9 h-9 text-blef-green-dark"
@@ -295,7 +295,7 @@ const Header = () => {
               </li>
             )
           )}
-          <li className="list-none pt-4">
+          {/* <li className="list-none pt-4">
             <Link
               to="/get-involved"
               onClick={() => setMobileOpen(false)}
@@ -303,7 +303,7 @@ const Header = () => {
             >
               Get Involved
             </Link>
-          </li>
+          </li> */}
         </ul>
       </div>
     </header>

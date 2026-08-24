@@ -6,6 +6,9 @@ import {
   FaCheckCircle,
   FaSpinner,
 } from "react-icons/fa";
+import ayesImg from "../../assets/ayes-project.jpeg";
+import bootcampImg from "../../assets/bootcamp-project.jpeg";
+import legacyImg from "../../assets/legacy-project.jpeg";
 
 const CATEGORIES = [
   "All Initiatives",
@@ -23,6 +26,7 @@ const PROJECTS = [
     location: "Abuja (FCT) & Pan-African Virtual",
     date: "Upcoming Convening",
     status: "Upcoming",
+    image: ayesImg,
     summary:
       "A premier convening uniting young founders, mentors, and corporate partners to set the agenda for youth-led enterprise across Africa.",
     metrics: "Flagship Youth Gathering",
@@ -35,7 +39,8 @@ const PROJECTS = [
     thematicArea: "Entrepreneurship & Business Development",
     location: "Abuja, Nigeria",
     date: "Upcoming Cohort",
-    status: "In Progress",
+    status: "Completed",
+    image: bootcampImg,
     summary:
       "Intensive, hands-on business acceleration equipping first-generation founders with actionable strategy, marketing funnels, and cash flow tools.",
     metrics: "Structured Cohort Training",
@@ -49,48 +54,10 @@ const PROJECTS = [
     location: "Abuja, Nigeria",
     date: "Completed Convening",
     status: "Completed",
+    image: legacyImg,
     summary:
       "High-impact gathering focusing on succession planning, documented systems, and shifting mindsets from short-term hustle to multi-generational legacy.",
     metrics: "SME Founders Convened",
-    link: "/media",
-  },
-  {
-    id: 4,
-    title: "Business On-Time School Outreach",
-    category: "Outreaches",
-    thematicArea: "STEM Education & Innovation",
-    location: "Secondary & Tertiary Institutions",
-    date: "Completed Outreach",
-    status: "Completed",
-    summary:
-      "Engaging students and teachers to impart practical enterprise skills and innovation-led business problem-solving from an early stage.",
-    metrics: "Students & Teachers Reached",
-    link: "/media",
-  },
-  {
-    id: 5,
-    title: "Legacy in Motion: Beyond the Safety Net",
-    category: "Summits & Conferences",
-    thematicArea: "Access to Finance & Markets",
-    location: "Abuja Secretariat",
-    date: "Completed Convening",
-    status: "Completed",
-    summary:
-      "Empowering entrepreneurs to navigate market hurdles, secure sustainable credit, and eliminate dependency on informal safety nets.",
-    metrics: "Micro-Enterprises Supported",
-    link: "/media",
-  },
-  {
-    id: 6,
-    title: "Inclusive Futures Hub",
-    category: "Bootcamps",
-    thematicArea: "Inclusive Entrepreneurship & Social Impact",
-    location: "Abuja & Regional Hubs",
-    date: "Upcoming Cohort",
-    status: "Upcoming",
-    summary:
-      "Targeted incubator for persons with disabilities and underrepresented community innovators building practical business solutions.",
-    metrics: "Accessible Incubation",
     link: "/media",
   },
 ];
@@ -128,36 +95,30 @@ const OurProject = () => {
           </a>
         </div>
 
-        <div className="flex items-center gap-2 overflow-x-auto pb-4 mb-10 no-scrollbar">
-          {CATEGORIES.map((category) => (
-            <button
-              key={category}
-              onClick={() => setActiveCategory(category)}
-              className={`px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold whitespace-nowrap transition-all duration-200 cursor-pointer ${
-                activeCategory === category
-                  ? "bg-blef-green text-white shadow-md shadow-blef-green/20"
-                  : "bg-neutral-100 text-neutral-600 hover:bg-neutral-200 hover:text-blef-charcoal"
-              }`}
-            >
-              {category}
-            </button>
-          ))}
-        </div>
-
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredProjects.map((project) => (
             <article
               key={project.id}
               className="group flex flex-col bg-white rounded-2xl border border-neutral-200 overflow-hidden hover:border-transparent hover:shadow-[0_16px_40px_rgba(20,82,42,0.12)] hover:-translate-y-1.5 transition-all duration-300"
             >
-              <div className="relative h-52 w-full bg-neutral-200 overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-tr from-blef-green-dark via-blef-green to-blef-charcoal opacity-90 group-hover:scale-105 transition-transform duration-500 flex items-center justify-center text-white/40 text-xs font-semibold uppercase tracking-wider">
-                  [ {project.title} ]
-                </div>
+              {/* Photo Header with Image & Fallback */}
+              <div className="relative h-56 w-full bg-neutral-900 overflow-hidden">
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  onError={(e) => {
+                    e.currentTarget.style.display = "none";
+                  }}
+                />
+                
+                {/* Dark Gradient Overlay for text readability */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
 
+                {/* Status Badge */}
                 <div className="absolute top-4 left-4 z-10">
                   <span
-                    className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold shadow-sm ${
+                    className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold shadow-md ${
                       project.status === "Completed"
                         ? "bg-blef-green text-white"
                         : "bg-blef-gold text-blef-charcoal"
@@ -172,13 +133,15 @@ const OurProject = () => {
                   </span>
                 </div>
 
+                {/* Thematic Area Pill */}
                 <div className="absolute bottom-4 left-4 right-4 z-10">
-                  <span className="inline-block bg-black/60 backdrop-blur-sm text-blef-gold-light text-[0.72rem] font-bold px-2.5 py-1 rounded-md">
+                  <span className="inline-block bg-black/70 backdrop-blur-sm text-blef-gold-light text-[0.72rem] font-bold px-2.5 py-1 rounded-md">
                     {project.thematicArea}
                   </span>
                 </div>
               </div>
 
+              {/* Card Body */}
               <div className="flex-1 flex flex-col p-6">
                 <div className="flex items-center gap-4 text-xs font-medium text-neutral-500 mb-3">
                   <span className="flex items-center gap-1.5">

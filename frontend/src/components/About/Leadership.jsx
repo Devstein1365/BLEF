@@ -1,35 +1,34 @@
-import { FaLinkedinIn } from "react-icons/fa";
+import { FaLinkedinIn, FaUser } from "react-icons/fa";
+
+// Import leadership portraits
+import bellaImg from "../../assets/bella-khobe.jpeg";
+import jonathanImg from "../../assets/jonathan-ogoji.jpeg";
+import gloryImg from "../../assets/glory-okezie.jpeg";
 
 const MANAGEMENT_TEAM = [
   {
     name: "Bella Khobe Jonathan",
     role: "Executive Director",
+    image: bellaImg,
     bio: "Driving the strategic mandate, stakeholder mobilization, and overall executive leadership of Better Life Entrepreneurship Foundation across Africa.",
     tag: "Executive Leadership",
+    linkedin: "#",
   },
   {
     name: "Jonathan Ogoji",
     role: "Director of Programmes",
+    image: jonathanImg,
     bio: "Overseeing the end-to-end design, localized curricula implementation, and operational roll-out of BLEF's 7 thematic pillars.",
     tag: "Programmes",
+    linkedin: "#",
   },
   {
     name: "Glory Okezie",
     role: "Communications & Partnerships Manager",
+    image: gloryImg,
     bio: "Managing institutional partnerships, strategic stakeholder relations, corporate sponsorships, and public media dispatches.",
     tag: "Partnerships",
-  },
-  {
-    name: "Barr. Ayo Olabode",
-    role: "Director, Legal & Secretary",
-    bio: "Guiding institutional governance, statutory regulatory compliance, intellectual property protection, and contractual covenants.",
-    tag: "Legal & Governance",
-  },
-  {
-    name: "Mary Amogo",
-    role: "Finance Officer",
-    bio: "Directing fiscal governance, grant budgeting, disbursement tracking, and transparent operational audit compliance.",
-    tag: "Finance",
+    linkedin: "#",
   },
 ];
 
@@ -58,16 +57,36 @@ const Leadership = () => {
               key={idx}
               className="group bg-neutral-50 rounded-2xl overflow-hidden border border-neutral-200 hover:border-blef-green hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col"
             >
-              {/* Photo Frame Placeholder */}
-              <div className="relative h-64 w-full bg-neutral-200 overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-tr from-blef-green-dark via-blef-green to-blef-charcoal opacity-90 group-hover:scale-105 transition-transform duration-500 flex items-center justify-center text-white/40 text-xs font-semibold uppercase tracking-wider">
-                  [ {leader.name} ]
+              {/* Photo Frame Container */}
+              <div className="relative h-72 w-full bg-neutral-900 overflow-hidden">
+                {leader.image ? (
+                  <img
+                    src={leader.image}
+                    alt={leader.name}
+                    className="w-full h-full object-scale-down group-hover:scale-100 transition-transform duration-500"
+                    onError={(e) => {
+                      e.currentTarget.style.display = "none";
+                    }}
+                  />
+                ) : null}
+
+                {/* Fallback Placeholder (shows if image fails or is missing) */}
+                <div className="absolute inset-0 bg-gradient-to-tr from-blef-green-dark via-blef-green to-neutral-800 -z-10 flex flex-col items-center justify-center text-white/40">
+                  <FaUser size={40} className="mb-2 opacity-50" />
+                  <span className="text-xs font-bold uppercase tracking-wider">
+                    {leader.name}
+                  </span>
                 </div>
-                <div className="absolute top-4 left-4">
-                  <span className="bg-black/60 backdrop-blur-sm text-blef-gold-light text-[0.7rem] font-bold px-2.5 py-1 rounded-md">
+
+                {/* Tag Pill */}
+                <div className="absolute top-4 left-4 z-10">
+                  <span className="bg-black/60 backdrop-blur-sm text-blef-gold-light text-[0.7rem] font-bold px-2.5 py-1 rounded-md shadow-sm">
                     {leader.tag}
                   </span>
                 </div>
+
+                {/* Gradient Shadow at Bottom of Photo */}
+                <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/60 to-transparent" />
               </div>
 
               {/* Details */}
@@ -85,10 +104,12 @@ const Leadership = () => {
                 </div>
 
                 <div className="mt-6 pt-4 border-t border-neutral-200 flex items-center justify-between">
-                  <span className="text-[0.7rem] text-neutral-400 font-medium">BLEF Secretariat</span>
+                  <span className="text-[0.7rem] text-neutral-400 font-medium">
+                    BLEF Secretariat
+                  </span>
                   <a
-                    href="#linkedin"
-                    aria-label="LinkedIn profile"
+                    href={leader.linkedin || "#"}
+                    aria-label={`${leader.name} LinkedIn`}
                     className="w-8 h-8 rounded-full bg-white border border-neutral-200 flex items-center justify-center text-neutral-600 hover:bg-blef-green hover:text-white hover:border-blef-green transition-colors"
                   >
                     <FaLinkedinIn size={12} />

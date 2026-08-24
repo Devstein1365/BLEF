@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import heroBg from "../../assets/hero-bg.jpeg";
 
 const STATS = [
   { label: "Entrepreneurs Reached", value: 5000, suffix: "+" },
@@ -68,16 +69,13 @@ const Hero = () => {
 
   return (
     <section className="relative overflow-hidden bg-blef-green-dark">
-      {/* Dynamic Background */}
+      {/* Background Image with Dark/Green Overlay */}
       <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{
-          backgroundImage:
-            "linear-gradient(135deg, #14522A 0%, #1F7A3C 55%, #8a6a12 130%)",
-        }}
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: `url(${heroBg})` }}
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-blef-green-dark via-blef-green-dark/75 to-blef-green-dark/30" />
-      <div className="absolute -top-32 -right-32 w-[480px] h-[480px] rounded-full bg-blef-gold/20 blur-3xl" />
+      <div className="absolute inset-0 bg-gradient-to-r from-blef-green-dark/65 via-blef-green-dark/85 to-black/80" />
+      <div className="absolute -top-32 -right-32 w-[480px] h-[480px] rounded-full bg-blef-gold/20 blur-3xl pointer-events-none" />
 
       <div className="relative max-w-[1280px] mx-auto px-6 pt-24 pb-20 sm:pt-32 sm:pb-28">
         <div className="max-w-3xl">
@@ -91,9 +89,7 @@ const Hero = () => {
             Creating Legacies.
           </h1>
 
-          <p className="mt-6 text-base sm:text-lg text-white/90 leading-relaxed max-w-2xl font-normal">
-            Your beginning doesn’t have to look like anyone else’s. Across Africa, we bridge the gap for first-generation entrepreneurs and SMEs with free, practical training, real-world mentorship, and vibrant peer accountability.
-          </p>
+         
 
           <div className="mt-9 flex flex-wrap items-center gap-4">
             <a
@@ -115,7 +111,7 @@ const Hero = () => {
       {/* Stats Bar */}
       <div
         ref={statsRef}
-        className="relative border-t border-white/15 bg-black/20 backdrop-blur-sm"
+        className="relative border-t border-white/15 bg-black/30 backdrop-blur-md"
       >
         <div className="max-w-[1280px] mx-auto px-6 py-8 grid grid-cols-2 sm:grid-cols-4 gap-6">
           {STATS.map((stat) => (

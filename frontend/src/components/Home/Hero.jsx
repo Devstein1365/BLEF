@@ -1,5 +1,38 @@
 import { useEffect, useRef, useState } from "react";
-import heroBg from "../../assets/hero-bg.jpeg";
+import empoweringImg from "../../assets/hero/Empowering People.jpg";
+import buildingImg from "../../assets/hero/Building Enterprises.jpg";
+import creatingImg from "../../assets/hero/Creating Legacies.jpg";
+
+const HERO_SLIDES = [
+  
+  {
+    image: buildingImg,
+    tagline: "Building Enterprises.",
+    lead: "Building Enterprises.",
+    middle: "Empowering People.",
+    end: "Creating Legacies.",
+    description:
+      "Transitioning African startups and SMEs from guesswork to scalable, structured, and profitable businesses that survive year five.",
+  },
+  {
+    image: creatingImg,
+    tagline: "Creating Legacies.",
+    lead: "Creating Legacies.",
+    middle: "Empowering People.",
+    end: "Building Enterprises.",
+    description:
+      "Fostering generational wealth, documented workflows, and sustainable institutions built to outlast their original founders.",
+  },
+  {
+    image: empoweringImg,
+    tagline: "Empowering People.",
+    lead: "Empowering People.",
+    middle: "Building Enterprises.",
+    end: "Creating Legacies.",
+    description:
+      "Equipping youth, women, and aspiring founders across Africa with free, practical skills, mentorship, and lifelong community support.",
+  },
+];
 
 const STATS = [
   { label: "Entrepreneurs Reached", value: 5000, suffix: "+" },
@@ -48,9 +81,19 @@ function StatItem({ stat, start }) {
 }
 
 const Hero = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
   const [statsVisible, setStatsVisible] = useState(false);
   const statsRef = useRef(null);
 
+  // Background slideshow auto-advance (every 5 seconds)
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev === HERO_SLIDES.length - 1 ? 0 : prev + 1));
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
+  // Stats Intersection Observer
   useEffect(() => {
     const el = statsRef.current;
     if (!el) return;
@@ -67,58 +110,102 @@ const Hero = () => {
     return () => observer.disconnect();
   }, []);
 
+  const active = HERO_SLIDES[currentSlide];
+
   return (
-    <section className="relative overflow-hidden bg-blef-green-dark">
-      {/* Background Image with Dark/Green Overlay */}
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${heroBg})` }}
-      />
-      <div className="absolute inset-0 bg-gradient-to-r from-blef-green-dark/65 via-blef-green-dark/85 to-black/80" />
+    <section className="relative overflow-hidden bg-blef-green-dark min-h-[680px] lg:min-h-[600px] flex flex-col justify-between">
+      
+      {/* Background Slideshow Images */}
+      {HERO_SLIDES.map((slide, idx) => (
+        <div
+          key={idx}
+          className={`absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-1000 ease-in-out ${
+            currentSlide === idx ? "opacity-100 scale-105 transition-transform duration-[6000ms]" : "opacity-0 scale-100"
+          }`}
+          style={{ backgroundImage: `url(${slide.image})` }}
+        />
+      ))}
+
+      {/* Dark & Emerald Gradient Overlays */}
+      <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-blef-green-dark/65 to-black/75" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-transparent to-black/50" />
       <div className="absolute -top-32 -right-32 w-[480px] h-[480px] rounded-full bg-blef-gold/20 blur-3xl pointer-events-none" />
 
-      <div className="relative max-w-[1280px] mx-auto px-6 pt-24 pb-20 sm:pt-32 sm:pb-28">
+      {/* Content Container */}
+      <div className="relative z-10 max-w-[1280px] w-full mx-auto px-6 pt-24 pb-3 sm:pt-32 sm:pb-24 my-[-20px]">
         <div className="max-w-3xl">
-          <span className="inline-block px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-sm text-blef-gold-light text-xs font-semibold uppercase tracking-widest border border-white/15">
-            Better Life Entrepreneurship Foundation
-          </span>
+          
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md text-blef-gold-light text-xs font-semibold uppercase tracking-widest border border-white/20 mb-6">
+            <span>Better Life Entrepreneurship Foundation</span>
+          </div>
 
-          <h1 className="mt-6 text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-[1.12] tracking-tight">
-            Empowering People.{" "}
-            <span className="text-blef-gold-light">Building Enterprises.</span>{" "}
-            Creating Legacies.
+          {/* Dynamic Bold Phrase Display */}
+          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black text-white leading-[1.08] tracking-tight transition-all duration-700">
+            <span className="text-blef-gold-light block drop-shadow-md">
+              {active.tagline}
+            </span>
+            
           </h1>
 
-         
+        
 
-          <div className="mt-9 flex flex-wrap items-center gap-4">
+          <div className="mt-5 flex flex-wrap items-center gap-4">
             <a
               href="/get-involved"
-              className="inline-flex items-center px-7 py-3.5 rounded-full bg-blef-gold text-blef-charcoal font-bold text-sm sm:text-base hover:bg-blef-gold-light hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(212,160,23,0.4)] transition-all duration-300"
+              className="inline-flex items-center px-8 py-4 rounded-full bg-blef-gold text-blef-charcoal font-black text-sm sm:text-base hover:bg-blef-gold-light hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(212,160,23,0.45)] transition-all duration-300 uppercase tracking-wider"
             >
               Join a Session
             </a>
             <a
               href="/about"
-              className="inline-flex items-center px-7 py-3.5 rounded-full border-2 border-white/40 text-white font-bold text-sm sm:text-base hover:bg-white hover:text-blef-green-dark hover:border-white transition-all duration-300"
+              className="inline-flex items-center px-8 py-4 rounded-full border-2 border-white/50 text-white font-bold text-sm sm:text-base hover:bg-white hover:text-blef-green-dark hover:border-white transition-all duration-300"
             >
               Explore Our Mission
             </a>
           </div>
+
+          {/* Slide Indicator Bars */}
+          <div className="flex items-center gap-3 mt-10">
+            {HERO_SLIDES.map((slide, idx) => (
+              <button
+                key={idx}
+                onClick={() => setCurrentSlide(idx)}
+                aria-label={`Go to slide ${idx + 1}`}
+                className="group flex flex-col items-start gap-1 cursor-pointer py-1"
+              >
+                <div
+                  className={`h-1.5 rounded-full transition-all duration-500 ${
+                    currentSlide === idx
+                      ? "w-12 bg-blef-gold"
+                      : "w-6 bg-white/30 group-hover:bg-white/60"
+                  }`}
+                />
+                <span
+                  className={`text-[0.65rem] font-bold uppercase tracking-wider transition-colors hidden sm:block ${
+                    currentSlide === idx ? "text-blef-gold-light" : "text-white/40"
+                  }`}
+                >
+                  {slide.tagline.replace(".", "")}
+                </span>
+              </button>
+            ))}
+          </div>
+
         </div>
       </div>
 
       {/* Stats Bar */}
       <div
         ref={statsRef}
-        className="relative border-t border-white/15 bg-black/30 backdrop-blur-md"
+        className="relative z-10 border-t border-white/15 bg-black/10 backdrop-blur-md"
       >
-        <div className="max-w-[1280px] mx-auto px-6 py-8 grid grid-cols-2 sm:grid-cols-4 gap-6">
+        <div className="max-w-[1280px] mx-auto px-6 py-7 grid grid-cols-2 sm:grid-cols-4 gap-6">
           {STATS.map((stat) => (
             <StatItem key={stat.label} stat={stat} start={statsVisible} />
           ))}
         </div>
       </div>
+
     </section>
   );
 };

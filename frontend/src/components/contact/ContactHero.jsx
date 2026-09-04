@@ -24,17 +24,17 @@ const ContactHero = () => {
         </nav>
 
         <div className="max-w-3xl">
-          <span className="inline-block px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-sm text-blef-gold-light text-xs font-bold uppercase tracking-widest border border-white/15">
+          {/* <span className="inline-block px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-sm text-blef-gold-light text-xs font-bold uppercase tracking-widest border border-white/15">
             Headquarters & Inquiries
-          </span>
+          </span> */}
 
           <h1 className="mt-6 text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.12]">
             Connect with the <span className="text-blef-gold-light">Secretariat</span>
           </h1>
 
-          <p className="mt-6 text-[14px] sm:text-[14px] lg:text-[16px] text-white/90 leading-relaxed font-normal">
+          {/* <p className="mt-6 text-[14px] sm:text-[14px] lg:text-[16px] text-white/90 leading-relaxed font-normal">
             Based in Abuja, Nigeria, and expanding across Africa. Whether you have questions regarding our training cohorts, institutional sponsorships, legal governance, or media convenings, our team is ready to assist.
-          </p>
+          </p> */}
 
           <div className="mt-8 inline-flex items-center gap-3 px-5 py-3 rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm">
             <span className="w-2 h-2 rounded-full bg-blef-gold animate-pulse" />

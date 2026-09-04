@@ -127,17 +127,17 @@ const Hero = () => {
       ))}
 
       {/* Dark & Emerald Gradient Overlays */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-blef-green-dark/65 to-black/75" />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-transparent to-black/50" />
-      <div className="absolute -top-32 -right-32 w-[480px] h-[480px] rounded-full bg-blef-gold/20 blur-3xl pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-blef-green-dark/50 to-black/50" />
+      {/* <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-transparent to-black/50" /> */}
+      {/* <div className="absolute -top-32 -right-32 w-[480px] h-[480px] rounded-full bg-blef-gold/20 blur-3xl pointer-events-none" /> */}
 
       {/* Content Container */}
       <div className="relative z-10 max-w-[1280px] w-full mx-auto px-6 pt-24 pb-3 sm:pt-32 sm:pb-24 my-[-20px]">
         <div className="max-w-3xl">
           
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md text-blef-gold-light text-xs font-semibold uppercase tracking-widest border border-white/20 mb-6">
+          {/* <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md text-blef-gold-light text-xs font-semibold uppercase tracking-widest border border-white/20 mb-6">
             <span>Better Life Entrepreneurship Foundation</span>
-          </div>
+          </div> */}
 
           {/* Dynamic Bold Phrase Display */}
           <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black text-white leading-[1.08] tracking-tight transition-all duration-700">
@@ -149,7 +149,7 @@ const Hero = () => {
 
         
 
-          <div className="mt-5 flex flex-wrap items-center gap-4">
+          {/* <div className="mt-5 flex flex-wrap items-center gap-4">
             <a
               href="/get-involved"
               className="inline-flex items-center px-8 py-4 rounded-full bg-blef-gold text-blef-charcoal font-black text-sm sm:text-base hover:bg-blef-gold-light hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(212,160,23,0.45)] transition-all duration-300 uppercase tracking-wider"
@@ -162,7 +162,7 @@ const Hero = () => {
             >
               Explore Our Mission
             </a>
-          </div>
+          </div> */}
 
           {/* Slide Indicator Bars */}
           <div className="flex items-center gap-3 mt-10">

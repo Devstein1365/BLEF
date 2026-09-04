@@ -9,8 +9,8 @@ const About = ()=> {
         <>
             <AboutHero/>
             <MissionVisionValues/>
-            <OurStory/>
             <Leadership/>
+            <OurStory/>
             <GovernanceImpact/>
         </>
     )

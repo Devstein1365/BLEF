@@ -24,17 +24,17 @@ const MediaHero = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           <div className="lg:col-span-8">
-            <span className="inline-block px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-sm text-blef-gold-light text-xs font-bold uppercase tracking-widest border border-white/15">
+            {/* <span className="inline-block px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-sm text-blef-gold-light text-xs font-bold uppercase tracking-widest border border-white/15">
               News, Convenings & Dispatches
-            </span>
+            </span> */}
 
             <h1 className="mt-6 text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.12]">
               Events & <span className="text-blef-gold-light">Media Center</span>
             </h1>
 
-            <p className="mt-6 text-[14px] sm:text-[14px] lg:text-[16px] text-white/90 leading-relaxed font-normal max-w-2xl">
+            {/* <p className="mt-6 text-[14px] sm:text-[14px] lg:text-[16px] text-white/90 leading-relaxed font-normal max-w-2xl">
               Real transformation happens when entrepreneurs gather, learn, and hold each other accountable. Explore our summits, bootcamps, school outreaches, and press releases.
-            </p>
+            </p> */}
 
             
           </div>

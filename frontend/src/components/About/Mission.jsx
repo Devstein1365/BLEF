@@ -143,7 +143,7 @@ const MissionVisionValues = () => {
         </div>
 
         {/* Color Philosophy Banner */}
-        <div className="bg-gradient-to-r from-blef-green-dark via-blef-green to-blef-gold/90 rounded-3xl p-8 sm:p-10 text-white mb-20 shadow-lg">
+        {/* <div className="bg-gradient-to-r from-blef-green-dark via-blef-green to-blef-gold/90 rounded-3xl p-8 sm:p-10 text-white mb-20 shadow-lg">
           <div className="max-w-3xl">
             <span className="text-xs font-extrabold uppercase tracking-widest text-blef-gold-light">
               Brand Philosophy
@@ -168,7 +168,7 @@ const MissionVisionValues = () => {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
 
         {/* Clean Outlined / Shadowed Strategic Objectives Slider */}
         <div>

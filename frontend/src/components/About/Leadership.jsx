@@ -4,6 +4,8 @@ import { FaLinkedinIn, FaUser } from "react-icons/fa";
 import bellaImg from "../../assets/bella-khobe.jpeg";
 import jonathanImg from "../../assets/jonathan-ogoji.jpeg";
 import gloryImg from "../../assets/glory-okezie.jpeg";
+import maryImg from "../../assets/mary-amogo.jpg"
+import ayomideImg from "../../assets/ayomide.jpg"
 
 const MANAGEMENT_TEAM = [
   {
@@ -26,6 +28,22 @@ const MANAGEMENT_TEAM = [
     name: "Glory Okezie",
     role: "Communications & Partnerships Manager",
     image: gloryImg,
+    bio: "Managing institutional partnerships, strategic stakeholder relations, corporate sponsorships, and public media dispatches.",
+    tag: "Partnerships",
+    linkedin: "#",
+  },
+  {
+    name: "Mary Amogo",
+    role: "Finance Officer",
+    image: maryImg,
+    bio: "Managing institutional partnerships, strategic stakeholder relations, corporate sponsorships, and public media dispatches.",
+    tag: "Partnerships",
+    linkedin: "#",
+  },
+  {
+    name: "Ayomide I. Olabode Esq.",
+    role: "Legal Officer/Secretary",
+    image: ayomideImg,
     bio: "Managing institutional partnerships, strategic stakeholder relations, corporate sponsorships, and public media dispatches.",
     tag: "Partnerships",
     linkedin: "#",

@@ -96,16 +96,13 @@ const Header = () => {
           </div>
 
           <div className="flex gap-3.5">
-            <a href="#" aria-label="Facebook" className="opacity-90 hover:text-blef-gold-light transition">
+            <a href="https://www.facebook.com/share/1DCwikjwUF/" aria-label="Facebook" className="opacity-90 hover:text-blef-gold-light transition">
               <FaFacebookF size={12} />
             </a>
-            <a href="#" aria-label="Twitter / X" className="opacity-90 hover:text-blef-gold-light transition">
+            <a href="https://x.com/BetterLifeEF" aria-label="Twitter / X" className="opacity-90 hover:text-blef-gold-light transition">
               <FaTwitter size={12} />
             </a>
-            <a href="#" aria-label="Instagram" className="opacity-90 hover:text-blef-gold-light transition">
-              <FaInstagram size={12} />
-            </a>
-            <a href="#" aria-label="LinkedIn" className="opacity-90 hover:text-blef-gold-light transition">
+            <a href="https://ng.linkedin.com/in/better-life-entrepreneurship-foundation-911407408" aria-label="LinkedIn" className="opacity-90 hover:text-blef-gold-light transition">
               <FaLinkedinIn size={12} />
             </a>
           </div>

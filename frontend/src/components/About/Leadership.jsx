@@ -6,6 +6,8 @@ import jonathanImg from "../../assets/jonathan-ogoji.jpeg";
 import gloryImg from "../../assets/glory-okezie.jpeg";
 import maryImg from "../../assets/mary-amogo.jpg"
 import ayomideImg from "../../assets/ayomide.jpg"
+import jummaiImg from "../../assets/jummai.jpg"
+import instantImg from "../../assets/instant.jpg"
 
 const MANAGEMENT_TEAM = [
   {
@@ -36,7 +38,7 @@ const MANAGEMENT_TEAM = [
     name: "Mary Amogo",
     role: "Finance Officer",
     image: maryImg,
-    bio: "Managing institutional partnerships, strategic stakeholder relations, corporate sponsorships, and public media dispatches.",
+    bio: "Manages financial records, budgets, transactions, financial reporting, regulatory compliance, and the organisation's overall financial accountability.",
     tag: "Partnerships",
     linkedin: "#",
   },
@@ -44,7 +46,23 @@ const MANAGEMENT_TEAM = [
     name: "Ayomide I. Olabode Esq.",
     role: "Legal Officer/Secretary",
     image: ayomideImg,
-    bio: "Managing institutional partnerships, strategic stakeholder relations, corporate sponsorships, and public media dispatches.",
+    bio: "Oversees legal and regulatory compliance, prepares and reviews official documents, maintains organisational records, documents meetings, and provides guidance on governance matters.",
+    tag: "Partnerships",
+    linkedin: "#",
+  },
+  {
+    name: "Jummai Chiwuba Kura",
+    role: "M&E Officer",
+    image: jummaiImg,
+    bio: "Develops monitoring frameworks, tracks programme performance, analyses data, measure outcomes and impact, and prepare evidence-based reports to support decision-making.",
+    tag: "Partnerships",
+    linkedin: "#",
+  },
+  {
+    name: "Instant-EX LTD",
+    role: "IT Consultant",
+    image: instantImg,
+    bio: "Provides strategic guidance on ICT systems, infrastructure, cybersecurity, data management, and digital transformation to improve organisational efficiency and performance.",
     tag: "Partnerships",
     linkedin: "#",
   },

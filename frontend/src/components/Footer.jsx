@@ -55,16 +55,13 @@ const Footer = () => {
             </div>
 
             <div className="flex items-center gap-3">
-              <a href="#" aria-label="Facebook" className="w-8 h-8 rounded-full bg-white/10 hover:bg-blef-green hover:text-white text-neutral-300 flex items-center justify-center transition">
+              <a href="https://www.facebook.com/share/1DCwikjwUF/" aria-label="Facebook" className="w-8 h-8 rounded-full bg-white/10 hover:bg-blef-green hover:text-white text-neutral-300 flex items-center justify-center transition">
                 <FaFacebookF size={12} />
               </a>
-              <a href="#" aria-label="Twitter / X" className="w-8 h-8 rounded-full bg-white/10 hover:bg-blef-green hover:text-white text-neutral-300 flex items-center justify-center transition">
+              <a href="https://x.com/BetterLifeEF" aria-label="Twitter / X" className="w-8 h-8 rounded-full bg-white/10 hover:bg-blef-green hover:text-white text-neutral-300 flex items-center justify-center transition">
                 <FaTwitter size={12} />
               </a>
-              <a href="#" aria-label="Instagram" className="w-8 h-8 rounded-full bg-white/10 hover:bg-blef-green hover:text-white text-neutral-300 flex items-center justify-center transition">
-                <FaInstagram size={12} />
-              </a>
-              <a href="#" aria-label="LinkedIn" className="w-8 h-8 rounded-full bg-white/10 hover:bg-blef-green hover:text-white text-neutral-300 flex items-center justify-center transition">
+              <a href="https://ng.linkedin.com/in/better-life-entrepreneurship-foundation-911407408" aria-label="LinkedIn" className="w-8 h-8 rounded-full bg-white/10 hover:bg-blef-green hover:text-white text-neutral-300 flex items-center justify-center transition">
                 <FaLinkedinIn size={12} />
               </a>
             </div>

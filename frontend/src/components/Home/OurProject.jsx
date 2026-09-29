@@ -6,9 +6,9 @@ import {
   FaCheckCircle,
   FaSpinner,
 } from "react-icons/fa";
-import ayesImg from "../../assets/ayes-project.jpeg";
-import bootcampImg from "../../assets/bootcamp-project.jpeg";
-import legacyImg from "../../assets/legacy-project.jpeg";
+import deepFlyer from "../../assets/events/deep-flyer.jpeg";
+import riseUpFlyer from "../../assets/events/riseup-flyer.jpeg";
+import ayesLogo from "../../assets/ayes-project.jpeg";
 
 const CATEGORIES = [
   "All Initiatives",
@@ -20,44 +20,44 @@ const CATEGORIES = [
 const PROJECTS = [
   {
     id: 1,
-    title: "African Youth Entrepreneurs Summit (AYES)",
-    category: "Summits & Conferences",
-    thematicArea: "Youth Economic Empowerment",
-    location: "Abuja (FCT) & Pan-African Virtual",
-    date: "Upcoming Convening",
-    status: "Upcoming",
-    image: ayesImg,
+    title: "Digital Enterprise and Empowerment Programme (DEEP)",
+    category: "Bootcamps",
+    thematicArea: "Digital Commerce & Economic Empowerment",
+    location: "Durumi Community, Abuja",
+    date: "October 5th, 2026",
+    status: "Registration Open",
+    image: deepFlyer,
     summary:
-      "A premier convening uniting young founders, mentors, and corporate partners to set the agenda for youth-led enterprise across Africa.",
-    metrics: "Flagship Youth Gathering",
-    link: "/media",
+      "A targeted economic empowerment and entrepreneurship / digital skills development project for rural women, youths, petty traders, small-scale women farmers, and first-generation entrepreneurs.",
+    metrics: "Community Outreach",
+    link: "/get-involved",
   },
   {
     id: 2,
-    title: "RISE-UP Bootcamp",
+    title: "RISE-UP Bootcamp (Rural Income & Skills Upgrade)",
     category: "Bootcamps",
     thematicArea: "Entrepreneurship & Business Development",
-    location: "Abuja, Nigeria",
-    date: "Upcoming Cohort",
-    status: "Completed",
-    image: bootcampImg,
+    location: "Abuja, FCT",
+    date: "23-29 November 2026",
+    status: "Upcoming",
+    image: riseUpFlyer,
     summary:
-      "Intensive, hands-on business acceleration equipping first-generation founders with actionable strategy, marketing funnels, and cash flow tools.",
-    metrics: "Structured Cohort Training",
-    link: "/media",
+      "A one-week economic empowerment bootcamp covering Business Skills, Digital Commerce (Mobile Money & Online Selling), Mentorship, and Seed Capital Access.",
+    metrics: "200 Beneficiaries • 160 Seed Capital Grants",
+    link: "/get-involved",
   },
   {
     id: 3,
-    title: "Building a Legacy Business Summit",
+    title: "African Youth Entrepreneurs Summit (AYES)",
     category: "Summits & Conferences",
-    thematicArea: "Legacy & Sustainable Enterprise Development",
-    location: "Abuja, Nigeria",
-    date: "Completed Convening",
-    status: "Completed",
-    image: legacyImg,
+    thematicArea: "Youth Economic Empowerment",
+    location: "Abuja (FCT) & Pan-African Stream",
+    date: "April 2027",
+    status: "Upcoming",
+    image: ayesLogo,
     summary:
-      "High-impact gathering focusing on succession planning, documented systems, and shifting mindsets from short-term hustle to multi-generational legacy.",
-    metrics: "SME Founders Convened",
+      "A premier convening uniting young founders, mentors, and corporate partners to set the agenda for youth-led enterprise across Africa. Theme: Innovate. Empower. Transform Africa.",
+    metrics: "Flagship Continental Summit",
     link: "/media",
   },
 ];
@@ -82,7 +82,7 @@ const OurProject = () => {
               Our Projects & Convenings
             </h2>
             <p className="mt-3 text-base text-neutral-600 leading-relaxed">
-              Real transformation happens when entrepreneurs gather, learn, and hold each other accountable. Explore our past and upcoming initiatives.
+              Real transformation happens when entrepreneurs gather, learn, and build sustainable enterprises. Explore our upcoming cohorts and summits.
             </p>
           </div>
 
@@ -101,21 +101,14 @@ const OurProject = () => {
               key={project.id}
               className="group flex flex-col bg-white rounded-2xl border border-neutral-200 overflow-hidden hover:border-transparent hover:shadow-[0_16px_40px_rgba(20,82,42,0.12)] hover:-translate-y-1.5 transition-all duration-300"
             >
-              {/* Photo Header with Image & Fallback */}
-              <div className="relative h-56 w-full bg-neutral-900 overflow-hidden">
+              <div className="relative h-60 w-full bg-neutral-900 overflow-hidden">
                 <img
                   src={project.image}
                   alt={project.title}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  onError={(e) => {
-                    e.currentTarget.style.display = "none";
-                  }}
                 />
-                
-                {/* Dark Gradient Overlay for text readability */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
 
-                {/* Status Badge */}
                 <div className="absolute top-4 left-4 z-10">
                   <span
                     className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold shadow-md ${
@@ -133,7 +126,6 @@ const OurProject = () => {
                   </span>
                 </div>
 
-                {/* Thematic Area Pill */}
                 <div className="absolute bottom-4 left-4 right-4 z-10">
                   <span className="inline-block bg-black/70 backdrop-blur-sm text-blef-gold-light text-[0.72rem] font-bold px-2.5 py-1 rounded-md">
                     {project.thematicArea}
@@ -141,7 +133,6 @@ const OurProject = () => {
                 </div>
               </div>
 
-              {/* Card Body */}
               <div className="flex-1 flex flex-col p-6">
                 <div className="flex items-center gap-4 text-xs font-medium text-neutral-500 mb-3">
                   <span className="flex items-center gap-1.5">
@@ -170,7 +161,7 @@ const OurProject = () => {
                     href={project.link}
                     className="inline-flex items-center gap-1 text-xs font-bold text-blef-charcoal group-hover:text-blef-green group-hover:translate-x-1 transition-all"
                   >
-                    <span>Read More</span>
+                    <span>Register</span>
                     <FaArrowRight size={10} />
                   </a>
                 </div>

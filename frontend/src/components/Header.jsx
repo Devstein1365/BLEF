@@ -10,18 +10,40 @@ import {
   FaChevronDown,
   FaBars,
   FaTimes,
+  FaEnvelope,
 } from "react-icons/fa";
 import logo from "../assets/logo-2.png";
 import { BRAND } from "../utils/constants";
 
 const THEMATIC_AREAS = [
-  { label: "Entrepreneurship & Business Development", href: "/what-we-do/entrepreneurship-business-development" },
-  { label: "Youth Economic Empowerment", href: "/what-we-do/youth-economic-empowerment" },
-  { label: "Women's Economic Empowerment", href: "/what-we-do/womens-economic-empowerment" },
-  { label: "STEM Education & Innovation", href: "/what-we-do/stem-education-innovation" },
-  { label: "Access to Finance & Markets", href: "/what-we-do/access-to-finance-markets" },
-  { label: "Inclusive Entrepreneurship & Social Impact", href: "/what-we-do/inclusive-entrepreneurship-social-impact" },
-  { label: "Legacy & Sustainable Enterprise Development", href: "/what-we-do/legacy-sustainable-enterprise-development" },
+  {
+    label: "Entrepreneurship & Business Development",
+    href: "/what-we-do/entrepreneurship-business-development",
+  },
+  {
+    label: "Youth Economic Empowerment",
+    href: "/what-we-do/youth-economic-empowerment",
+  },
+  {
+    label: "Women's Economic Empowerment",
+    href: "/what-we-do/womens-economic-empowerment",
+  },
+  {
+    label: "STEM Education & Innovation",
+    href: "/what-we-do/stem-education-innovation",
+  },
+  {
+    label: "Access to Finance & Markets",
+    href: "/what-we-do/access-to-finance-markets",
+  },
+  {
+    label: "Inclusive Entrepreneurship & Social Impact",
+    href: "/what-we-do/inclusive-entrepreneurship-social-impact",
+  },
+  {
+    label: "Legacy & Sustainable Enterprise Development",
+    href: "/what-we-do/legacy-sustainable-enterprise-development",
+  },
 ];
 
 const NAV_LINKS = [
@@ -93,16 +115,35 @@ const Header = () => {
               <FaPhoneAlt size={11} />
               <span>{BRAND.phone2}</span>
             </a>
+            <a
+              href={`mailto:${BRAND.email}`}
+              className="flex items-center gap-2 opacity-90 hover:opacity-100 hover:text-blef-gold-light transition"
+            >
+              <FaEnvelope size={12} />
+              <span>{BRAND.email}</span>
+            </a>
           </div>
 
           <div className="flex gap-3.5">
-            <a href="https://www.facebook.com/share/1DCwikjwUF/" aria-label="Facebook" className="opacity-90 hover:text-blef-gold-light transition">
+            <a
+              href="https://www.facebook.com/share/1DCwikjwUF/"
+              aria-label="Facebook"
+              className="opacity-90 hover:text-blef-gold-light transition"
+            >
               <FaFacebookF size={12} />
             </a>
-            <a href="https://x.com/BetterLifeEF" aria-label="Twitter / X" className="opacity-90 hover:text-blef-gold-light transition">
+            <a
+              href="https://x.com/BetterLifeEF"
+              aria-label="Twitter / X"
+              className="opacity-90 hover:text-blef-gold-light transition"
+            >
               <FaTwitter size={12} />
             </a>
-            <a href="https://ng.linkedin.com/in/better-life-entrepreneurship-foundation-911407408" aria-label="LinkedIn" className="opacity-90 hover:text-blef-gold-light transition">
+            <a
+              href="https://ng.linkedin.com/in/better-life-entrepreneurship-foundation-911407408"
+              aria-label="LinkedIn"
+              className="opacity-90 hover:text-blef-gold-light transition"
+            >
               <FaLinkedinIn size={12} />
             </a>
           </div>
@@ -113,7 +154,11 @@ const Header = () => {
       <div className="bg-white border-b border-neutral-200">
         <div className="max-w-[1280px] mx-auto px-6 py-3 flex items-center justify-between gap-6">
           <Link to="/" className="flex items-center gap-3 shrink-0">
-            <img src={logo} alt={BRAND.name} className="h-11 sm:h-[52px] w-auto" />
+            <img
+              src={logo}
+              alt={BRAND.name}
+              className="h-11 sm:h-[52px] w-auto"
+            />
             <div className="flex flex-col leading-tight">
               <span className="font-extrabold text-[1.02rem] text-blef-green-dark tracking-tight leading-none">
                 Better Life
@@ -125,7 +170,10 @@ const Header = () => {
           </Link>
 
           {/* Desktop nav */}
-          <nav className="hidden lg:flex flex-1 justify-center" aria-label="Primary">
+          <nav
+            className="hidden lg:flex flex-1 justify-center"
+            aria-label="Primary"
+          >
             <ul className="flex items-center gap-1 list-none m-0 p-0">
               {NAV_LINKS.map((link) =>
                 link.dropdown ? (
@@ -140,7 +188,9 @@ const Header = () => {
                       onClick={() => setDropdownOpen(false)}
                       className={({ isActive }) =>
                         `group relative inline-flex items-center gap-1.5 px-3.5 py-2.5 rounded-md text-[0.92rem] font-semibold transition-colors ${
-                          isActive ? "text-blef-green" : "text-blef-charcoal hover:text-blef-green"
+                          isActive
+                            ? "text-blef-green"
+                            : "text-blef-charcoal hover:text-blef-green"
                         }`
                       }
                     >
@@ -155,7 +205,9 @@ const Header = () => {
                           />
                           <span
                             className={`absolute left-3.5 right-3.5 bottom-1 h-0.5 bg-blef-gold origin-left transition-transform duration-200 ${
-                              isActive ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
+                              isActive
+                                ? "scale-x-100"
+                                : "scale-x-0 group-hover:scale-x-100"
                             }`}
                           />
                         </>
@@ -190,7 +242,9 @@ const Header = () => {
                       to={link.href}
                       className={({ isActive }) =>
                         `group relative inline-flex items-center px-3.5 py-2.5 rounded-md text-[0.92rem] font-semibold transition-colors ${
-                          isActive ? "text-blef-green" : "text-blef-charcoal hover:text-blef-green"
+                          isActive
+                            ? "text-blef-green"
+                            : "text-blef-charcoal hover:text-blef-green"
                         }`
                       }
                     >
@@ -199,14 +253,16 @@ const Header = () => {
                           {link.label}
                           <span
                             className={`absolute left-3.5 right-3.5 bottom-1 h-0.5 bg-blef-gold origin-left transition-transform duration-200 ${
-                              isActive ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
+                              isActive
+                                ? "scale-x-100"
+                                : "scale-x-0 group-hover:scale-x-100"
                             }`}
                           />
                         </>
                       )}
                     </NavLink>
                   </li>
-                )
+                ),
               )}
             </ul>
           </nav>
@@ -240,7 +296,10 @@ const Header = () => {
         <ul className="list-none m-0 px-4 pt-2 pb-6">
           {NAV_LINKS.map((link) =>
             link.dropdown ? (
-              <li key={link.label} className="list-none border-b border-neutral-200">
+              <li
+                key={link.label}
+                className="list-none border-b border-neutral-200"
+              >
                 <div className="flex items-center justify-between py-3.5">
                   <Link
                     to={link.href}
@@ -290,7 +349,7 @@ const Header = () => {
                   {link.label}
                 </Link>
               </li>
-            )
+            ),
           )}
           <li className="list-none pt-4">
             <Link
